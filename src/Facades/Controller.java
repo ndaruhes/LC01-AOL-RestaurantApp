@@ -32,7 +32,7 @@ public class Controller {
 		} while (!valid.checkPassword(password));
 //		list.add(new Trainer(Name, username, password));
 	}
-//
+  //Login Customer Or Admin
 //	public void loginTrainer(ArrayList<Trainer> list, ArrayList<Pokemon> Pokelist) {
 //		String username, password;
 //		int index = -1;
@@ -48,7 +48,8 @@ public class Controller {
 //		} while (index == -1);
 //		new MainLogin(true, list.get(index), Pokelist);
 //	}
-//
+
+	// Add Order Food
 //	public void AddPokemon(ArrayList<Pokemon> list, Trainer trainer) {
 //		printPokemonList(list);
 //		String input = "";
@@ -77,7 +78,8 @@ public class Controller {
 //			scan.nextLine();
 //		}
 //	}
-//
+
+	// Print My OrderList
 //	public void printPokemonList(ArrayList<Pokemon> list) {
 //		int index = 1;
 //		System.out.println("\tAll Pokemon");
@@ -93,7 +95,7 @@ public class Controller {
 //			System.out.println("=============================");
 //		}
 //	}
-//
+	
 //	public void clear() {
 //		for (int i = 0; i < 30; i++) {
 //			System.out.println();

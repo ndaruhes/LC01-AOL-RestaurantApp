@@ -57,23 +57,24 @@ public class Validasi {
 		return false;
 	}
 
-//	public int checkID(String ID, String Pass, ArrayList<Food> list) {
-//		int i = 0;
-//		for (Trainer x : list) {
-//			if (x.getUsername().equals(ID)) {
-//				if (x.getPassword().equals(Pass)) {
-//					return i;
-//				} else {
-//					System.out.println("Password or Username wrong !! ");
-//					return -1;
-//				}
-//			}
-//			i++;
-//		}
-//		System.out.println("Username not found !");
-//		return -1;
-//	}
-//
+	public int checkID(String ID, String Pass, ArrayList<People> list) {
+		int i = 0;
+		for (People x : list) {
+			if (x.getUsername().equals(ID)) {
+				if (x.getPassword().equals(Pass)) {
+					return i;
+				} else {
+					System.out.println("Password or Username wrong !! ");
+					return -1;
+				}
+			}
+			i++;
+		}
+		System.out.println("Username not found !");
+		return -1;
+	}
+
+	// Buat Check Order Food
 //	public int checkPokemon(ArrayList<Pokemon> list, String PokemonID) {
 //		if (PokemonID.length() == 1) {
 //			int id;
@@ -98,21 +99,9 @@ public class Validasi {
 //		System.out.println("Pokemon not found !! ");
 //		return -1;
 //	}
-//
+	
 //	public int randomize() {
 //		Random r = new Random();
 //		return r.nextInt(10);
-//	}
-//
-//	public int checkHeal(String name, ArrayList<Pokemon> list) {
-//		int idx = 0;
-//		for (Pokemon pokemon : list) {
-//			if (pokemon.getName().equals(name)) {
-//				return idx;
-//			}
-//			idx++;
-//		}
-//		System.out.println("Pokemon not found ! ");
-//		return -1;
 //	}
 }
