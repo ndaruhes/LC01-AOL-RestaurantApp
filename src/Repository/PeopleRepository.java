@@ -1,0 +1,16 @@
+package Repository;
+
+import java.util.ArrayList;
+
+import Models.Customer.*;
+
+public class PeopleRepository {
+	private static ArrayList<People> peopleList = null;
+
+	public static ArrayList<People> getPeopleList() {
+		if (peopleList == null) {
+			peopleList = new ArrayList<People>();
+		}
+		return peopleList;
+	}
+}

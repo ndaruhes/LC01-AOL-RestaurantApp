@@ -18,6 +18,22 @@ public class Validasi {
 		return false;
 	}
 
+	public boolean checkAddress(String address) {
+		if (address.length() >= 6) {
+			return true;
+		}
+		System.out.println("Addres Must be at least 6 Character !! ");
+		return false;
+	}
+
+	public boolean checkAge(int age) {
+		if (age > 5) {
+			return true;
+		}
+		System.out.println("This App Not For Kids (Must Be at least 6 years old) ");
+		return false;
+	}
+
 	public boolean checkName(String Name) {
 		if (Name.length() > 3) {
 			return true;
@@ -99,7 +115,7 @@ public class Validasi {
 //		System.out.println("Pokemon not found !! ");
 //		return -1;
 //	}
-	
+
 //	public int randomize() {
 //		Random r = new Random();
 //		return r.nextInt(10);

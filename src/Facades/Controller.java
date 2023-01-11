@@ -3,51 +3,69 @@ package Facades;
 import java.util.*;
 import Models.*;
 import Models.Customer.*;
+import Utils.*;
+import Main.*;
 
 public class Controller {
-	private Scanner scan = new Scanner(System.in);
 	private Validasi valid = new Validasi();
-//	private Utils util = new Utils();
-//
-	public void registerTrainer(ArrayList<People> list) {
-		String username, password, Name;
+	private Utils util = new Utils();
+
+	public void registerMember(ArrayList<People> list) {
+		String username, password, address, Name;
+		int age;
 		do {
 			System.out.print("Input your name : ");
-			Name = scan.nextLine();
+			Name = util.ScanLine();
 		} while (!valid.checkName(Name));
 		do {
 			System.out.print("Input your ID/Username (Must be unique and min. 6 characters) [0 to exit]:  ");
-			username = scan.nextLine();
+			username = util.ScanLine();
 			if (username.equals("0")) {
 				return;
 			}
 			username = username.trim();
 		} while (!valid.checkUsername(username, list));
 		do {
+			System.out.print("Input your address [0 to exit] : ");
+			address = util.ScanLine();
+			if (address.equals("0")) {
+				return;
+			}
+		} while (!valid.checkAddress(username));
+		do {
+			System.out.print("Input your Age [0 to exit] : ");
+			age = util.ScanInt();
+			if (age == 0) {
+				return;
+			}
+		} while (!valid.checkAge(age));
+		
+		do {
 			System.out.print("Input your Password (At least 6 character and must contains 1 Symbol) [0 to exit] : ");
-			password = scan.nextLine();
+			password = util.ScanLine();
 			if (password.equals("0")) {
 				return;
 			}
 		} while (!valid.checkPassword(password));
-//		list.add(new Trainer(Name, username, password));
+		list.add(new Customer(Name, address, password, username, age));
 	}
-  //Login Customer Or Admin
-//	public void loginTrainer(ArrayList<Trainer> list, ArrayList<Pokemon> Pokelist) {
-//		String username, password;
-//		int index = -1;
-//		do {
-//			System.out.print("Input your ID/Username [0 to exit]:  ");
-//			username = scan.nextLine();
-//			if (username.equals("0")) {
-//				return;
-//			}
-//			System.out.print("Input your Password :  ");
-//			password = scan.nextLine();
-//			index = valid.checkID(username, password, list);
-//		} while (index == -1);
-//		new MainLogin(true, list.get(index), Pokelist);
-//	}
+
+	// Login Customer Or Admin	
+	public void loginMemberOrAdmin(ArrayList<People> list) {
+		String username, password;
+		int index = -1;
+		do {
+			System.out.print("Input your ID/Username [0 to exit]:  ");
+			username = util.ScanLine();
+			if (username.equals("0")) {
+				return;
+			}
+			System.out.print("Input your Password :  ");
+			password = util.ScanLine();
+			index = valid.checkID(username, password, list);
+		} while (index == -1);
+		new MainLogin(true, list.get(index), list);
+	}
 
 	// Add Order Food
 //	public void AddPokemon(ArrayList<Pokemon> list, Trainer trainer) {
@@ -95,7 +113,7 @@ public class Controller {
 //			System.out.println("=============================");
 //		}
 //	}
-	
+
 //	public void clear() {
 //		for (int i = 0; i < 30; i++) {
 //			System.out.println();
