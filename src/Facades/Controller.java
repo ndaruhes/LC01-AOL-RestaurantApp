@@ -61,9 +61,6 @@ public class Controller {
 	// Login Customer Or Admin
 	public void loginMemberOrAdmin(ArrayList<People> list) {
 		String username, password;
-		if (true) {
-
-		}
 		int index = -1;
 		do {
 			System.out.print("Input your ID/Username [0 to exit]:  ");
