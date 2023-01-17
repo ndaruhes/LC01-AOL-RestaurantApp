@@ -32,14 +32,8 @@ public class MainLogin {
 			menu(Customer);
 			do {
 				System.out.print("Choose one >> ");
-				try {
-					input = scan.nextInt();
-					scan.nextLine();
-				} catch (Exception e) {
-					scan.nextLine();
-					System.out.print("Input must be numeric ! ");
-				}
-			} while (input > 5 || input < 1);
+				input = util.ScanInt();
+			} while (input > 4 || input < 1);
 			switch (input) {
 			case 1:
 				CR.OrderMenu(foodList, Customer);

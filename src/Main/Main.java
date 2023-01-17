@@ -6,7 +6,7 @@ import Facades.*;
 import Mediator.MediatorOrder;
 import Mediator.OrderMediator;
 import Models.Customer.*;
-import Repository.*;
+import Repository_Singleton.*;
 
 public class Main {
 	public Utils util = new Utils();
@@ -21,6 +21,7 @@ public class Main {
 	}
 
 	public Main(boolean onApp) {
+		CR.BuildAdmin(peopleList, OrderSystem);
 		while (onApp) {
 			int input = -1;
 			util.clear();

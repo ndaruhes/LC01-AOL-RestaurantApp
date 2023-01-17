@@ -1,4 +1,4 @@
-package Repository;
+package Repository_Singleton;
 
 import java.util.ArrayList;
 
@@ -8,8 +8,10 @@ public class PeopleRepository {
 	private static ArrayList<People> peopleList = null;
 
 	public static ArrayList<People> getPeopleList() {
-		if (peopleList == null) {
-			peopleList = new ArrayList<People>();
+		synchronized (peopleList) {
+			if (peopleList == null) {
+				peopleList = new ArrayList<People>();
+			}
 		}
 		return peopleList;
 	}

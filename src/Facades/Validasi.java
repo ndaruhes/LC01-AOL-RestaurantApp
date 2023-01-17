@@ -1,6 +1,8 @@
 package Facades;
 
 import java.util.*;
+
+import Mediator.MediatorOrder;
 import Models.*;
 import Models.Customer.*;
 
@@ -114,8 +116,18 @@ public class Validasi {
 		return -1;
 	}
 
-//	public int randomize() {
-//		Random r = new Random();
-//		return r.nextInt(10);
-//	}
+	public boolean checkAdmin(ArrayList<People> list, MediatorOrder OrderSystem) {
+		if (list.isEmpty()) {
+			list.add(new Admin("Admin", "-", "Admin", "Admin", 0, OrderSystem));
+		} else {
+			for (People people : list) {
+				if (people.getRole().equals("Admin")) {
+					return true;
+				}
+			}
+			list.add(new Admin("Admin", "-", "Admin", "Admin", 0, OrderSystem));
+		}
+		return true;
+	}
+
 }
