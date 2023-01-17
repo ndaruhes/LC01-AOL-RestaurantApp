@@ -1,23 +1,21 @@
 package Main;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 import Models.*;
 import Models.Customer.*;
-import Repository.*;
 import Utils.*;
 import Facades.*;
 
 public class MainLogin {
-
 	Scanner scan = new Scanner(System.in);
-	LocalDate LocalTime = LocalDate.now();
 	private Controller CR = new Controller();
+	private ArrayList<Food> foodList = null;
+	private Utils util = new Utils();
 
 	void menu(People trainer) {
 		System.out.println("Welcome, " + trainer.getName());
-		System.out.println("Logined at : " + LocalTime);
+		System.out.println("Logined at : " + util.getLocalTime());
 		System.out.println("=======================");
 		System.out.println("Chose your menu ");
 		System.out.println("1. Order Food");
@@ -26,17 +24,12 @@ public class MainLogin {
 		System.out.println("4. Log out !");
 	}
 
-	void clear() {
-		for (int i = 0; i < 15; i++) {
-			System.out.println();
-		}
-	}
-
-	public MainLogin(boolean OnApp, People trainer, ArrayList<People> list) {
+	public MainLogin(boolean OnApp, Customer Customer, ArrayList<People> list) {
+		foodList = CR.getFoodRepo();
 		while (OnApp) {
 			int input = -1;
-			clear();
-			menu(trainer);
+			util.clear();
+			menu(Customer);
 			do {
 				System.out.print("Choose one >> ");
 				try {
@@ -49,21 +42,19 @@ public class MainLogin {
 			} while (input > 5 || input < 1);
 			switch (input) {
 			case 1:
-				
+				CR.OrderMenu(foodList, Customer);
 				break;
 			case 2:
-//				CR.trainPokemon(trainer, list);
+				CR.viewMyOrder(Customer.getListFood());
 				break;
 			case 3:
-//				CR.viewMyPokemon(trainer);
+				CR.viewMenu(foodList);
 				break;
 			case 4:
-//				CR.HealPokemon(trainer);
-				break;
-			case 5:
 				OnApp = !OnApp;
 				return;
 			default:
+				break;
 			}
 		}
 	}

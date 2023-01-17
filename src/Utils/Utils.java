@@ -1,6 +1,7 @@
 package Utils;
 
 import java.text.DecimalFormat;
+import java.time.LocalDate;
 import java.util.*;
 
 public class Utils {
@@ -11,6 +12,10 @@ public class Utils {
 	Scanner scan = new Scanner(System.in);
 	Random rand = new Random();
 	DecimalFormat ft = new DecimalFormat("#");
+
+	public LocalDate getLocalTime() {
+		return LocalDate.now();
+	}
 
 	public int ScanInt() {
 		int idx = -1;

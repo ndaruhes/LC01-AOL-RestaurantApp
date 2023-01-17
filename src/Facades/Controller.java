@@ -3,14 +3,20 @@ package Facades;
 import java.util.*;
 import Models.*;
 import Models.Customer.*;
+import Repository.FoodRepository;
 import Utils.*;
 import Main.*;
+import Mediator.MediatorOrder;
 
 public class Controller {
 	private Validasi valid = new Validasi();
 	private Utils util = new Utils();
 
-	public void registerMember(ArrayList<People> list) {
+	public ArrayList<Food> getFoodRepo() {
+		return FoodRepository.getFoodList();
+	}
+
+	public void registerMember(ArrayList<People> list, MediatorOrder OrderSystem) {
 		String username, password, address, Name;
 		int age;
 		do {
@@ -39,7 +45,7 @@ public class Controller {
 				return;
 			}
 		} while (!valid.checkAge(age));
-		
+
 		do {
 			System.out.print("Input your Password (At least 6 character and must contains 1 Symbol) [0 to exit] : ");
 			password = util.ScanLine();
@@ -47,10 +53,10 @@ public class Controller {
 				return;
 			}
 		} while (!valid.checkPassword(password));
-		list.add(new Customer(Name, address, password, username, age));
+		list.add(new Customer(Name, address, password, username, age, OrderSystem));
 	}
 
-	// Login Customer Or Admin	
+	// Login Customer Or Admin
 	public void loginMemberOrAdmin(ArrayList<People> list) {
 		String username, password;
 		int index = -1;
@@ -64,38 +70,59 @@ public class Controller {
 			password = util.ScanLine();
 			index = valid.checkID(username, password, list);
 		} while (index == -1);
-		new MainLogin(true, list.get(index), list);
+		new MainLogin(true, (Customer) list.get(index), list);
 	}
 
-	// Add Order Food
-//	public void AddPokemon(ArrayList<Pokemon> list, Trainer trainer) {
-//		printPokemonList(list);
-//		String input = "";
-//		int index = -1;
-//		do {
-//			System.out.println(list.size());
-//			System.out.print("Choose your Pokemon (Use Pokemon ID or Name to Choose) : ");
-//			input = scan.nextLine();
-//			index = valid.checkPokemon(list, input);
-//		} while (index == -1);
-//		int size = trainer.getPokeList().size();
-//		if (trainer.lvl > size) {
-//			int success = trainer.AddPokeList(list.get(index - 1));
-//			if (success == 1) {
-//				System.out.println("Pokemond Added !");
-//				scan.nextLine();
-//			} else if (success == -2) {
-//				System.out.println("Can't add more than 3 pokemon !");
-//				scan.nextLine();
-//			} else {
-//				System.out.println("Can't add the same Pokemon !!");
-//				scan.nextLine();
-//			}
-//		} else {
-//			System.out.println("You can't add more pokemon (need to lvl up !) ");
-//			scan.nextLine();
-//		}
-//	}
+	public void viewMenu(ArrayList<Food> foodList) {
+		util.clear();
+		if (foodList.isEmpty()) {
+			System.out.println("No Menu Aviable !");
+			util.getchar();
+			return;
+		}
+		System.out.printf("%-15s All Menu %-15s", ' ', ' ');
+		System.out.printf("%-16s=========%-16s", '=', '=');
+		System.out.printf("| %-3s | %-5s | %-8s | %-13s | %-8s |", "No", "Food", "Price", "Description", "Category");
+		int x = 1;
+		for (Food food : foodList) {
+			System.out.print(x++);
+			food.printFood();
+		}
+		System.out.printf("%-16s=========%-16s", '=', '=');
+	}
+
+	public void viewMyOrder(ArrayList<Food> foodList) {
+		if (foodList.isEmpty()) {
+			System.out.println("No Menu Has Ordered !");
+			util.getchar();
+			return;
+		}
+		System.out.printf("%-13s Ordered Menu %-13s", ' ', ' ');
+		System.out.printf("%-16s=========%-16s", '=', '=');
+		System.out.printf("| %-3s | %-5s | %-8s | %-13s | %-8s |", "No", "Food", "Price", "Description", "Category");
+		int x = 1;
+		for (Food food : foodList) {
+			System.out.print(x++);
+			food.printFood();
+		}
+		System.out.printf("%-16s=========%-16s", '=', '=');
+	}
+
+	public void OrderMenu(ArrayList<Food> list, Customer Customer) {
+		viewMenu(list);
+		if (list.isEmpty()) {
+			return;
+		}
+		String input = "";
+		int index = -1;
+		do {
+			System.out.println(list.size());
+			System.out.print("Order menu (Use Menu ID or Name to Choose) : ");
+			input = util.ScanLine();
+			index = valid.checkFood(list, input);
+		} while (index == -1);
+		Customer.PlaceOrder(list.get(index));
+	}
 
 	// Print My OrderList
 //	public void printPokemonList(ArrayList<Pokemon> list) {

@@ -91,30 +91,28 @@ public class Validasi {
 	}
 
 	// Buat Check Order Food
-//	public int checkPokemon(ArrayList<Pokemon> list, String PokemonID) {
-//		if (PokemonID.length() == 1) {
-//			int id;
-//			try {
-//				id = Integer.parseInt(PokemonID);
-//			} catch (Exception e) {
-//				return -1;
-//			}
-//			if (id < 1 || id > list.size()) {
-//				System.out.println("Pokemon ID not found !");
-//				return -1;
-//			}
-//			return id;
-//		}
-//		int index = 1;
-//		for (Pokemon pokemon : list) {
-//			if (pokemon.getName().equals(PokemonID)) {
-//				return index;
-//			}
-//			index++;
-//		}
-//		System.out.println("Pokemon not found !! ");
-//		return -1;
-//	}
+	public int checkFood(ArrayList<Food> list, String FoodName) {
+		int id;
+		try {
+			id = Integer.parseInt(FoodName);
+			if (id < 1 || id > list.size()) {
+				System.out.println("Menu ID not found !");
+				return -1;
+			}
+			return id;
+		} catch (Exception e) {
+
+		}
+		int index = 1;
+		for (Food pokemon : list) {
+			if (pokemon.getFoodName().equals(FoodName)) {
+				return index;
+			}
+			index++;
+		}
+		System.out.println("Menu not found ! ");
+		return -1;
+	}
 
 //	public int randomize() {
 //		Random r = new Random();

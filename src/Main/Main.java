@@ -3,15 +3,16 @@ package Main;
 import Utils.*;
 import java.util.*;
 import Facades.*;
-import Models.*;
+import Mediator.MediatorOrder;
+import Mediator.OrderMediator;
 import Models.Customer.*;
 import Repository.*;
 
 public class Main {
 	public Utils util = new Utils();
 	private Controller CR = new Controller();
-	private ArrayList<Food> foodList = FoodRepository.getFoodList();
 	private ArrayList<People> peopleList = PeopleRepository.getPeopleList();
+	private MediatorOrder OrderSystem = new OrderMediator();
 
 	void menu() {
 		System.out.println("1. Login");
@@ -33,7 +34,7 @@ public class Main {
 				CR.loginMemberOrAdmin(peopleList);
 				break;
 			case 2:
-				CR.registerMember(peopleList);
+				CR.registerMember(peopleList, OrderSystem);
 				break;
 			case 3:
 				onApp = !onApp;

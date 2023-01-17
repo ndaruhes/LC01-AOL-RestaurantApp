@@ -1,13 +1,21 @@
 package Models;
 
 public abstract class Food {
-	private String foodName;
-	private int foodPrice;
-
+	protected String foodName, category;
+	protected int foodPrice;
+	
 	public Food(String foodName, int foodPrice) {
 		super();
 		this.foodName = foodName;
 		this.foodPrice = foodPrice;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public String getFoodName() {
@@ -26,4 +34,5 @@ public abstract class Food {
 		this.foodPrice = foodPrice;
 	}
 
+	public abstract void printFood();
 }
