@@ -35,22 +35,22 @@ public class MainLogin {
 				input = util.ScanInt();
 			} while (input > 4 || input < 1);
 			switch (input) {
-			case 1:
-				CR.OrderMenu(foodList, Customer);
-				break;
-			case 2:
-				CR.viewMyOrder(Customer.getListFood());
-				break;
-			case 3:
-				CR.viewMenu(foodList);
-				break;
-			case 4:
-				OnApp = !OnApp;
-				return;
-			default:
-				break;
+				case 1:
+					CR.OrderMenu(foodList, Customer);
+					break;
+				case 2:
+					CR.viewMyOrder(Customer.getListFood());
+					break;
+				case 3:
+					CR.viewMenu(foodList);
+					util.getchar();
+					break;
+				case 4:
+					OnApp = !OnApp;
+					return;
+				default:
+					break;
 			}
 		}
 	}
-
 }

@@ -9,7 +9,7 @@ public class Pizza extends Food{
 
 	@Override
 	public void printFood() {
-		System.out.printf("Name : %s\nPrice : %s\nCategory : %s\n\n", this.getFoodName(), this.getFoodPrice(),
+		System.out.printf("Name : %s\nPrice : %s\nCategory : %s\n", this.getFoodName(), this.getFoodPrice(),
 				this.getCategory());
 	}
 

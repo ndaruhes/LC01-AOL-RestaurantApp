@@ -86,15 +86,15 @@ public class Controller {
 			util.getchar();
 			return;
 		}
-		System.out.printf("%-15s All Menu %-15s", ' ', ' ');
-		System.out.printf("%-16s=========%-16s", '=', '=');
-		System.out.printf("| %-3s | %-5s | %-8s | %-13s | %-8s |", "No", "Food", "Price", "Description", "Category");
+		System.out.printf("%-15s All Menu %-15s\n", ' ', ' ');
+		System.out.printf("%-16s=========%-16s\n", '=', '=');
+		System.out.printf("| %-3s | %-5s | %-8s | %-13s | %-8s |\n", "No", "Food", "Price", "Description", "Category");
 		int x = 1;
 		for (Food food : foodList) {
 			System.out.print(x++);
 			food.printFood();
 		}
-		System.out.printf("%-16s=========%-16s", '=', '=');
+		System.out.printf("%-16s=========%-16s\n", '=', '=');
 	}
 
 	public void viewMyOrder(ArrayList<Food> foodList) {
@@ -103,15 +103,16 @@ public class Controller {
 			util.getchar();
 			return;
 		}
-		System.out.printf("%-13s Ordered Menu %-13s", ' ', ' ');
-		System.out.printf("%-16s=========%-16s", '=', '=');
-		System.out.printf("| %-3s | %-5s | %-8s | %-13s | %-8s |", "No", "Food", "Price", "Description", "Category");
+		System.out.printf("%-13s Ordered Menu %-13s\n", ' ', ' ');
+		System.out.printf("%-16s=========%-16s\n", '=', '=');
+		System.out.printf("| %-3s | %-5s | %-8s | %-13s | %-8s |\n", "No", "Food", "Price", "Description", "Category");
 		int x = 1;
 		for (Food food : foodList) {
 			System.out.print(x++);
 			food.printFood();
 		}
-		System.out.printf("%-16s=========%-16s", '=', '=');
+		System.out.printf("%-16s=========%-16s\n", '=', '=');
+		util.getchar();
 	}
 
 	public void OrderMenu(ArrayList<Food> list, Customer Customer) {
@@ -127,12 +128,13 @@ public class Controller {
 			input = util.ScanLine();
 			index = valid.checkFood(list, input);
 		} while (index == -1);
-		Customer.PlaceOrder(list.get(index));
+		Customer.PlaceOrder(list.get(index - 1));
+		util.getchar();
 	}
 
 	public void BuildAdmin(ArrayList<People> list, MediatorOrder OrderSystem) {
 		if (valid.checkAdmin(list, OrderSystem)) {
-			System.out.println("MAZOK");
+			// System.out.println("MAZOK");
 		}
 	}
 
