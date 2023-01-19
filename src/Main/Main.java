@@ -21,6 +21,7 @@ public class Main {
 	}
 
 	public Main(boolean onApp) {
+		
 		CR.BuildAdmin(peopleList, OrderSystem);
 		while (onApp) {
 			int input = -1;
@@ -49,5 +50,4 @@ public class Main {
 	public static void main(String[] args) {
 		new Main(true);
 	}
-
 }

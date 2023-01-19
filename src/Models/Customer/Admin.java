@@ -24,15 +24,15 @@ public class Admin extends People {
 
 	@Override
 	public void ReviceOrder(String CustomerID, ArrayList<Food> listFood) {
-		System.out.printf("%-16s=========%-16s", '=', '=');
+		System.out.printf("%-16s=========%-16s\n", '=', '=');
 		System.out.printf("| Customer Name : %-22s |\n", CustomerID);
 		System.out.println("=======================");
-		System.out.printf("| %-3s | %-5s | %-8s | %-13s | %-8s |", "No", "Food", "Price", "Description", "Category");
-		System.out.printf("%-16s=========%-16s", '=', '=');
+		System.out.printf("| %-3s | %-5s | %-8s | %-13s | %-8s |\n", "No", "Food", "Price", "Description", "Category");
+		System.out.printf("%-16s=========%-16s\n", '=', '=');
 		for (Food food : listFood) {
 			food.printFood();
 		}
-		System.out.printf("%-16s=========%-16s", '=', '=');
+		System.out.printf("%-16s=========%-16s\n", '=', '=');
 	}
 
 }

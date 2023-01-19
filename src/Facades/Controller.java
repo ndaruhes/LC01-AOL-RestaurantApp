@@ -6,6 +6,7 @@ import Factory.FoodFactory;
 import Models.*;
 import Models.Customer.*;
 import Repository_Singleton.FoodRepository;
+import Repository_Singleton.PeopleRepository;
 import Utils.*;
 import Main.*;
 import Mediator.MediatorOrder;
@@ -55,6 +56,8 @@ public class Controller {
 				return;
 			}
 		} while (!valid.checkPassword(password));
+
+		PeopleRepository.addCustomer(new Customer(Name, address, password, username, age, OrderSystem));
 		list.add(new Customer(Name, address, password, username, age, OrderSystem));
 	}
 
