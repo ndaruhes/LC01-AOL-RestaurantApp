@@ -41,5 +41,4 @@ public class OrderMediator implements MediatorOrder {
 		}
 		System.out.println("No Order From " + CustomerID + " !!");
 	}
-
 }
