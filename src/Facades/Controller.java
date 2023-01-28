@@ -6,7 +6,6 @@ import Factory.FoodFactory;
 import Models.*;
 import Models.Customer.*;
 import Repository_Singleton.FoodRepository;
-import Repository_Singleton.PeopleRepository;
 import Utils.*;
 import Main.*;
 import Mediator.MediatorOrder;
