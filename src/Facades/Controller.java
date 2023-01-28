@@ -56,8 +56,7 @@ public class Controller {
 				return;
 			}
 		} while (!valid.checkPassword(password));
-
-		PeopleRepository.addCustomer(new Customer(Name, address, password, username, age, OrderSystem));
+		
 		list.add(new Customer(Name, address, password, username, age, OrderSystem));
 	}
 
