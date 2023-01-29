@@ -5,7 +5,6 @@ import java.util.*;
 import Facades.*;
 import Mediator.MediatorOrder;
 import Mediator.OrderMediator;
-import Models.Food;
 import Models.Customer.*;
 import Repository_Singleton.*;
 
@@ -14,7 +13,6 @@ public class Main {
 	private Controller CR = new Controller();
 	private ArrayList<People> peopleList = PeopleRepository.getPeopleList();
 	private MediatorOrder OrderSystem = new OrderMediator();
-	private ArrayList<Food> List = null;
 
 	void menu() {
 		System.out.println("1. Login");
@@ -23,7 +21,6 @@ public class Main {
 	}
 
 	public Main(boolean onApp) {
-		List = CR.getFoodRepo();
 		CR.BuildAdmin(peopleList, OrderSystem);
 		while (onApp) {
 			int input = -1;
@@ -41,8 +38,7 @@ public class Main {
 					CR.registerMember(peopleList, OrderSystem);
 					break;
 				case 3:
-//					onApp = !onApp;
-					CR.	viewMenu(List);
+					onApp = !onApp;
 					break;
 				default:
 					break;

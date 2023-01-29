@@ -90,16 +90,16 @@ public class Controller {
 			util.getchar();
 			return;
 		}
-		System.out.printf("%-15s All Menu %-15s\n", " ", " ");
-		System.out.println("===============".substring(0, 40));
+		System.out.printf("%-26s All Menu %-25s\n", " ", " ");
+		System.out.println("=".repeat(59));
 		System.out.printf("| %-3s | %-20s | %-10s | %-13s |\n", "No", "Food", "Price", "Category");
+		System.out.println("=".repeat(59));
 		int x = 1;
 		for (Food food : foodList) {
 			System.out.printf("| %-3d ", x++);
 			food.printFood();
-			System.out.println();
 		}
-		System.out.printf("%16s=========%-16s\n", '=', '=');
+		System.out.println("=".repeat(59));
 	}
 
 	public void viewMyOrder(ArrayList<Food> foodList) {
@@ -108,15 +108,16 @@ public class Controller {
 			util.getchar();
 			return;
 		}
-		System.out.printf("%-13s Ordered Menu %-13s\n", ' ', ' ');
-		System.out.printf("%-16s=========%-16s\n", '=', '=');
-		System.out.printf("| %-3s | %-5s | %-8s | %-13s | %-8s |\n", "No", "Food", "Price", "Description", "Category");
+		System.out.printf("%-23s Ordered Menu %-22s\n", " ", " ");
+		System.out.println("=".repeat(59));
+		System.out.printf("| %-3s | %-20s | %-10s | %-13s |\n", "No", "Food", "Price", "Category");
+		System.out.println("=".repeat(59));
 		int x = 1;
 		for (Food food : foodList) {
 			System.out.print(x++);
 			food.printFood();
 		}
-		System.out.printf("%-16s=========%-16s\n", '=', '=');
+		System.out.println("=".repeat(59));
 		util.getchar();
 	}
 
