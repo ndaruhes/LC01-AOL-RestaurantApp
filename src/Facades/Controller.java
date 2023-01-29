@@ -2,6 +2,9 @@ package Facades;
 
 import java.util.*;
 
+import Builder.BurgerBuilder;
+import Builder.HotdogBuilder;
+import Builder.PizzaBuilder;
 import Factory.FoodFactory;
 import Models.*;
 import Models.Customer.*;
@@ -55,7 +58,7 @@ public class Controller {
 				return;
 			}
 		} while (!valid.checkPassword(password));
-		
+
 		list.add(new Customer(Name, address, password, username, age, OrderSystem));
 	}
 
@@ -87,15 +90,16 @@ public class Controller {
 			util.getchar();
 			return;
 		}
-		System.out.printf("%-15s All Menu %-15s\n", ' ', ' ');
-		System.out.printf("%-16s=========%-16s\n", '=', '=');
-		System.out.printf("| %-3s | %-5s | %-8s | %-13s | %-8s |\n", "No", "Food", "Price", "Description", "Category");
+		System.out.printf("%-15s All Menu %-15s\n", " ", " ");
+		System.out.println("===============".substring(0, 40));
+		System.out.printf("| %-3s | %-20s | %-10s | %-13s |\n", "No", "Food", "Price", "Category");
 		int x = 1;
 		for (Food food : foodList) {
-			System.out.print(x++);
+			System.out.printf("| %-3d ", x++);
 			food.printFood();
+			System.out.println();
 		}
-		System.out.printf("%-16s=========%-16s\n", '=', '=');
+		System.out.printf("%16s=========%-16s\n", '=', '=');
 	}
 
 	public void viewMyOrder(ArrayList<Food> foodList) {
@@ -140,6 +144,7 @@ public class Controller {
 	}
 
 	public boolean printAllCustomer(ArrayList<People> list) {
+		util.clear();
 		if (list.isEmpty()) {
 			System.out.println("No Customer Has Order !");
 			util.getchar();
@@ -202,5 +207,72 @@ public class Controller {
 		} while (x < 1 || x > 3);
 		FoodFactory fs = FoodFactory.getFoodFactory();
 		list.add(fs.MakeFood(x));
+	}
+
+	public void builCustomFood(ArrayList<Food> list) {
+		int x = -1, price = -1;
+		String name;
+		do {
+			util.clear();
+			System.out.println("Choose Category");
+			System.out.println("===============");
+			foodMenu();
+			System.out.println("4. Back");
+			System.out.print("Choose >> ");
+			x = util.ScanInt();
+			if (x == 0 || x == 4) {
+				return;
+			}
+		} while (x < 1 || x > 3);
+
+		do {
+			System.out.print("Input Food Name [0 To Exit] : ");
+			name = util.ScanLine();
+			if (x == 0) {
+				return;
+			}
+		} while (!valid.checkFoodLenght(name));
+
+		do {
+			System.out.print("Input Food Price [0 To Exit] : ");
+			price = util.ScanInt();
+			if (x == 0) {
+				return;
+			}
+		} while (!valid.checkFoodPrice(price));
+		Food food = null;
+		switch (x) {
+		case 1:
+			food = buildBurger(name, price);
+			break;
+		case 2:
+			food = buildPizza(name, price);
+			break;
+		case 3:
+			food = buildHotdog(name, price);
+			break;
+		}
+		list.add(food);
+		System.out.println(name + " Has Been Created !");
+		System.out.println("Press Enter To Continue ....");
+		util.getchar();
+	}
+
+	Food buildBurger(String name, int price) {
+		BurgerBuilder burgerBuilder = new BurgerBuilder();
+		Food burger = burgerBuilder.reset().buildName(name).buildPrice(price).getFood();
+		return burger;
+	}
+
+	Food buildPizza(String name, int price) {
+		PizzaBuilder PizzaBuilder = new PizzaBuilder();
+		Food Pizza = PizzaBuilder.reset().buildName(name).buildPrice(price).getFood();
+		return Pizza;
+	}
+
+	Food buildHotdog(String name, int price) {
+		HotdogBuilder HotdogBuilder = new HotdogBuilder();
+		Food HotDog = HotdogBuilder.reset().buildName(name).buildPrice(price).getFood();
+		return HotDog;
 	}
 }

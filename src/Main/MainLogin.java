@@ -43,7 +43,6 @@ public class MainLogin {
 					break;
 				case 3:
 					CR.viewMenu(foodList);
-					util.getchar();
 					break;
 				case 4:
 					OnApp = !OnApp;
