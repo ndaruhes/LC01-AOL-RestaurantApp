@@ -9,7 +9,7 @@ public class HotDog extends Food {
 
 	@Override
 	public void printFood() {
-		System.out.printf("| %-20s | %-10d | %-13s |\n", this.getFoodName(), this.getFoodPrice(),
+		System.out.printf("| %-20s | %-10d | %-14s |\n", this.getFoodName(), this.getFoodPrice(),
 				this.getCategory());
 	}
 
