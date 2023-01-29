@@ -33,22 +33,22 @@ public class MainAdmin {
 			do {
 				System.out.print("Choose one >> ");
 				input = util.ScanInt();
-			} while (input > 3 || input < 1);
+			} while (input > 4 || input < 1);
 			switch (input) {
-			case 1:
-				CR.buildFood(foodList);
-				break;
-			case 2:
-				CR.print_customer_ordered(list, Admin);
-				break;
-			case 3:
-				CR.ViewAllOrder(list, Admin);
-				break;
-			case 4:
-				OnApp = !OnApp;
-				return;
-			default:
-				break;
+				case 1:
+					CR.buildFood(foodList);
+					break;
+				case 2:
+					CR.ViewAllOrder(list, Admin);
+					break;
+				case 3:
+					CR.print_customer_ordered(list, Admin);
+					break;
+				case 4:
+					OnApp = !OnApp;
+					return;
+				default:
+					break;
 			}
 		}
 	}
