@@ -8,10 +8,8 @@ public class PeopleRepository {
 	private static ArrayList<People> peopleList = null;
 
 	public static ArrayList<People> getPeopleList() {
-		synchronized (peopleList) {
-			if (peopleList == null) {
-				peopleList = new ArrayList<People>();
-			}
+		if (peopleList == null) {
+			peopleList = new ArrayList<People>();
 		}
 		return peopleList;
 	}

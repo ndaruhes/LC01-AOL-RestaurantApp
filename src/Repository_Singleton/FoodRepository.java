@@ -7,10 +7,8 @@ public class FoodRepository {
 	private static ArrayList<Food> foodList = null;
 
 	public static ArrayList<Food> getFoodList() {
-		synchronized (foodList) {
-			if (foodList == null) {
-				foodList = new ArrayList<Food>();
-			}			
+		if (foodList == null) {
+			foodList = new ArrayList<Food>();
 		}
 		return foodList;
 	}
