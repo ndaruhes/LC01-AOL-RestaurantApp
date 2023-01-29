@@ -21,6 +21,7 @@ public class Main {
 	}
 
 	public Main(boolean onApp) {
+		
 		CR.BuildAdmin(peopleList, OrderSystem);
 		while (onApp) {
 			int input = -1;
@@ -31,17 +32,17 @@ public class Main {
 				input = util.ScanInt();
 			} while (input > 3 || input < 1);
 			switch (input) {
-			case 1:
-				CR.loginMemberOrAdmin(peopleList);
-				break;
-			case 2:
-				CR.registerMember(peopleList, OrderSystem);
-				break;
-			case 3:
-				onApp = !onApp;
-				break;
-			default:
-				break;
+				case 1:
+					CR.loginMemberOrAdmin(peopleList);
+					break;
+				case 2:
+					CR.registerMember(peopleList, OrderSystem);
+					break;
+				case 3:
+					onApp = !onApp;
+					break;
+				default:
+					break;
 			}
 		}
 	}
@@ -49,5 +50,4 @@ public class Main {
 	public static void main(String[] args) {
 		new Main(true);
 	}
-
 }

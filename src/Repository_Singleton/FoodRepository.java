@@ -1,8 +1,7 @@
 package Repository_Singleton;
 
-import java.util.*;
+import java.util.ArrayList;
 import Models.*;
-
 public class FoodRepository {
 	private static ArrayList<Food> foodList = null;
 
@@ -10,6 +9,7 @@ public class FoodRepository {
 		if (foodList == null) {
 			foodList = new ArrayList<Food>();
 		}
+
 		return foodList;
 	}
 

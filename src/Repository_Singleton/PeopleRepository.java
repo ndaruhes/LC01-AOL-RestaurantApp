@@ -1,9 +1,7 @@
 package Repository_Singleton;
 
 import java.util.ArrayList;
-
 import Models.Customer.*;
-
 public class PeopleRepository {
 	private static ArrayList<People> peopleList = null;
 
@@ -11,6 +9,7 @@ public class PeopleRepository {
 		if (peopleList == null) {
 			peopleList = new ArrayList<People>();
 		}
+
 		return peopleList;
 	}
 }
