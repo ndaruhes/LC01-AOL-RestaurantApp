@@ -116,6 +116,7 @@ public class Validasi {
 		return -1;
 	}
 
+
 	public boolean checkAdmin(ArrayList<People> list, MediatorOrder OrderSystem) {
 		if (list.isEmpty()) {
 			list.add(new Admin("Admin", "-", "Admin", "Admin", 0, OrderSystem));
@@ -128,5 +129,21 @@ public class Validasi {
 			list.add(new Admin("Admin", "-", "Admin", "Admin", 0, OrderSystem));
 		}
 		return true;
+	}
+
+	public boolean checkFoodLenght(String food) {
+		if (food.length() > 6) {
+			return true;
+		}
+		System.out.println("Food Name Must at least 6 Character ! ");
+		return false;
+	}
+
+	public boolean checkFoodPrice(int price) {
+		if (price > 5000) {
+			return true;
+		}
+		System.out.println("Food Price Must At Least Rp. 5000 !");
+		return false;
 	}
 }

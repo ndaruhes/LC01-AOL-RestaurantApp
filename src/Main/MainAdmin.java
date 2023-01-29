@@ -18,10 +18,11 @@ public class MainAdmin {
 		System.out.println("Logined at : " + util.getLocalTime());
 		System.out.println("=======================");
 		System.out.println("Chose your menu ");
-		System.out.println("1. Create Menu");
-		System.out.println("2. View All Order");
-		System.out.println("3. View Customer Order");
-		System.out.println("4. Log out !");
+		System.out.println("1. Create Custom Menu");
+		System.out.println("2. Create Menu");
+		System.out.println("3. View All Order");
+		System.out.println("4. View Customer Order");
+		System.out.println("5. Log out !");
 	}
 
 	public MainAdmin(boolean OnApp, Admin Admin, ArrayList<People> list) {
@@ -33,18 +34,21 @@ public class MainAdmin {
 			do {
 				System.out.print("Choose one >> ");
 				input = util.ScanInt();
-			} while (input > 4 || input < 1);
+			} while (input > 5 || input < 1);
 			switch (input) {
 				case 1:
-					CR.buildFood(foodList);
+					CR.builCustomFood(foodList);
 					break;
 				case 2:
-					CR.ViewAllOrder(list, Admin);
+					CR.buildFood(foodList);
 					break;
 				case 3:
-					CR.print_customer_ordered(list, Admin);
+					CR.ViewAllOrder(list, Admin);
 					break;
 				case 4:
+					CR.print_customer_ordered(list, Admin);
+					break;
+				case 5:
 					OnApp = !OnApp;
 					return;
 				default:

@@ -21,7 +21,7 @@ public class Admin extends People {
 	public void addFood(Food foodid) {
 		this.listFood.add(foodid);
 	}
-
+	
 	@Override
 	public void ReviceOrder(String CustomerID, ArrayList<Food> listFood) {
 		System.out.printf("%-16s=========%-16s\n", '=', '=');
