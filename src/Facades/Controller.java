@@ -232,7 +232,7 @@ public class Controller {
 			if (x == 0) {
 				return;
 			}
-		} while (!valid.checkFoodLenght(name));
+		} while (!valid.checkFoodLength(name));
 
 		do {
 			System.out.print("Input Food Price [0 To Exit] : ");
@@ -243,15 +243,15 @@ public class Controller {
 		} while (!valid.checkFoodPrice(price));
 		Food food = null;
 		switch (x) {
-		case 1:
-			food = buildBurger(name, price);
-			break;
-		case 2:
-			food = buildPizza(name, price);
-			break;
-		case 3:
-			food = buildHotdog(name, price);
-			break;
+			case 1:
+				food = buildBurger(name, price);
+				break;
+			case 2:
+				food = buildPizza(name, price);
+				break;
+			case 3:
+				food = buildHotdog(name, price);
+				break;
 		}
 		list.add(food);
 		System.out.println(name + " Has Been Created !");

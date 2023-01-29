@@ -116,7 +116,6 @@ public class Validasi {
 		return -1;
 	}
 
-
 	public boolean checkAdmin(ArrayList<People> list, MediatorOrder OrderSystem) {
 		if (list.isEmpty()) {
 			list.add(new Admin("Admin", "-", "Admin", "Admin", 0, OrderSystem));
@@ -131,7 +130,7 @@ public class Validasi {
 		return true;
 	}
 
-	public boolean checkFoodLenght(String food) {
+	public boolean checkFoodLength(String food) {
 		if (food.length() > 6) {
 			return true;
 		}

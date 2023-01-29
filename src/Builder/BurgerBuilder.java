@@ -31,5 +31,4 @@ public class BurgerBuilder implements FoodBuilder {
 	public Food getFood() {
 		return food;
 	}
-
 }
